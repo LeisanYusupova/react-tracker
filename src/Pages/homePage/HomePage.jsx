@@ -22,6 +22,7 @@ export const HomePage = () => {
                 })
                 .then(function (data) {
                     console.log('Сообщение с токеном: ', data);
+                    localStorage.setItem('onderToken', data);
                     document.body.innerHTML += `Сообщение с токеном: ${JSON.stringify(data)}`;
                 })
                 .catch(function (error) {
