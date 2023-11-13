@@ -1,6 +1,7 @@
 
 
 export const HomePage = () => {
+    console.log('test');
     document.addEventListener("DOMContentLoaded", function() {
         window.onload = function () {
             window.YaAuthSuggest.init({
