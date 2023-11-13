@@ -1,20 +1,21 @@
 export const Calculation  = () => {
     const requestOptions = {
-      method: 'GET', // or 'POST', 'PUT', etc., depending on your request
-      mode: 'no-cors',
-      headers: {
-        'Authorization': 'OAuth y0_AgAAAAAjDSwQAArFuQAAAADxFlH4pT5rM82wR9aup7MuB6eVNUKtaYg',
-        'Content-Type': 'application/json', // You can set this based on your request
-        'X-Org-ID': '7031733', // Include the organization ID in the headers
-      },
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+            'Authorization': 'OAuth y0_AgAAAAAjDSwQAArFuQAAAADxFlH4pT5rM82wR9aup7MuB6eVNUKtaYg',
+            'Content-Type': 'application/json',
+            'X-Org-ID': '7031733',
+        },
     };
 
-    fetch('https://api.tracker.yandex.net/v2/myself', requestOptions).then((response) => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json(); // Возвращаем JSON-ответ (или другой тип ответа)
-    })
+    fetch('https://api.tracker.yandex.net/v2/worklog?createdBy=leisanyagmurova&start=from:2023-11-01T00:00:00.008&start=to:2023-11-30T00:00:00.00', requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then((data) => {
             // Обрабатываем полученные данные
             console.log(data);
@@ -22,6 +23,7 @@ export const Calculation  = () => {
         .catch((error) => {
             console.error('Request failed:', error);
         });
+
 
     return (
         <>
