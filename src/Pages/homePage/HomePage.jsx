@@ -6,9 +6,9 @@ export const HomePage = () => {
             window.YaAuthSuggest.init({
                     client_id: '202f06d8b9824ee680dd9201edf6bf64',
                     response_type: 'token',
-                    redirect_uri: 'https://test/authorization.'
+                    redirect_uri: 'https://react-tracker-ochre.vercel.app/authorization'
                 },
-                'https://test', {
+                'https://react-tracker-ochre.vercel.app/', {
                     view: 'button',
                     parentId: 'container',
                     buttonView: 'main',

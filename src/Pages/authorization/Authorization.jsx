@@ -3,7 +3,7 @@ export const Authorization = () => {
         <>
             <script>
                 window.onload = function() {
-                window.YaSendSuggestToken("https://examplesite.com", {
+                window.YaSendSuggestToken("https://react-tracker-ochre.vercel.app", {
                     "kek": true
                 })
             };
