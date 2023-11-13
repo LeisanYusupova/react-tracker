@@ -1,6 +1,9 @@
 export const Authorization = () => {
     return (
         <>
+            <div>
+                Redirect page
+            </div>
             <script>
                 document.addEventListener("DOMContentLoaded", function()
                 {
