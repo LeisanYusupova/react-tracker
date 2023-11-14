@@ -16,7 +16,7 @@
 //     );
 
 window.onload = () => {
-    document.getElementById("suggest").onclick = () => {
+    //document.getElementById("suggest").onclick = () => {
         YaAuthSuggest.init({
                 client_id: '202f06d8b9824ee680dd9201edf6bf64',
                 response_type: 'token',
@@ -34,5 +34,5 @@ window.onload = () => {
     };
     document.getElementById("button").onclick = () => {
         // TODO button
-    };
+    //};
 };
