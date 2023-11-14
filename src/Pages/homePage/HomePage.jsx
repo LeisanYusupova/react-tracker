@@ -1,5 +1,4 @@
 
-
 export const HomePage = () => {
     console.log('test');
     document.addEventListener("DOMContentLoaded", function() {
