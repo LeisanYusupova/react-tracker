@@ -31,8 +31,5 @@ window.onload = () => {
                 console.log(result, data);
             })
             .catch((error) => console.log("Что-то пошло не так: ", error));
-    };
-    document.getElementById("button").onclick = () => {
-        // TODO button
-    //};
-};
+    }
+
