@@ -3,7 +3,7 @@ export const HomePage = () => {
     document.addEventListener("DOMContentLoaded", function() {
         window.onload = () => {
             document.getElementById("suggest").onclick = () => {
-                YaAuthSuggest.init({
+                window.YaAuthSuggest.init({
                         client_id: '202f06d8b9824ee680dd9201edf6bf64',
                         response_type: 'token',
                         redirect_uri: 'https://react-tracker-ochre.vercel.app/authorization'
