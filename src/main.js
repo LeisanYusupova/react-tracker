@@ -8,15 +8,15 @@
 //
 //     document.getElementById("auth").innerHTML = `${avatarHtml}${nameHtml}`;
 // };
-//
-// // Делаем запрос за инфой о пользователе.
+
+// Делаем запрос за инфой о пользователе.
 // const fetchYandexData = (token) =>
 //     fetch(`https://login.yandex.ru/info?format=json&oauth_token=${token}`).then(
 //         (res) => res.json()
 //     );
 
 window.onload = () => {
-    //document.getElementById("suggest").onclick = () => {
+    document.getElementById("suggest").onclick = () => {
         YaAuthSuggest.init({
                 client_id: '202f06d8b9824ee680dd9201edf6bf64',
                 response_type: 'token',
@@ -24,7 +24,7 @@ window.onload = () => {
             },
             '--https://react-tracker-ochre.vercel.app/--'
         )
-            .then(({ handler }) => handler())
+            .then(({handler}) => handler())
             .then(async (data) => {
                 //const result = await fetchYandexData(data.access_token);
                 //authorize(result);
@@ -32,4 +32,5 @@ window.onload = () => {
             })
             .catch((error) => console.log("Что-то пошло не так: ", error));
     }
+}
 
