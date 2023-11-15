@@ -1,4 +1,4 @@
-//Авторизуем пользователя, используя инфу о нем.
+// Авторизуем пользователя, используя инфу о нем.
 const authorize = ({
                        default_avatar_id: defaultAvatarId,
                        display_name: displayName,
@@ -9,7 +9,7 @@ const authorize = ({
     document.getElementById("auth").innerHTML = `${avatarHtml}${nameHtml}`;
 };
 
-//Делаем запрос за инфой о пользователе.
+// Делаем запрос за инфой о пользователе.
 const fetchYandexData = (token) =>
     fetch(`https://login.yandex.ru/info?format=json&oauth_token=${token}`).then(
         (res) => res.json()
@@ -28,8 +28,11 @@ window.onload = () => {
             .then(async (data) => {
                 const result = await fetchYandexData(data.access_token);
                 authorize(result);
-                console.log(data, result);
+                console.log(result, data);
             })
             .catch((error) => console.log("Что-то пошло не так: ", error));
+    };
+    document.getElementById("button").onclick = () => {
+        // TODO button
     };
 };
