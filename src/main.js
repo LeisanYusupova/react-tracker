@@ -17,12 +17,13 @@ const fetchYandexData = (token) =>
 
 window.onload = () => {
     document.getElementById("suggest").onclick = () => {
+        console.log('click');
         YaAuthSuggest.init({
-                client_id: '1620b5a01e8d43e88d43df26f7141ed2',
+                client_id: '202f06d8b9824ee680dd9201edf6bf64',
                 response_type: 'token',
-                redirect_uri: 'https://oauth-master-class-pi.vercel.app/token.html'
+                redirect_uri: 'https://react-tracker-ty5h.vercel.app/authorization.html'
             },
-            '--https://oauth-master-class-pi.vercel.app/--'
+            '--https://react-tracker-ty5h.vercel.app/--'
         )
             .then(({ handler }) => handler())
             .then(async (data) => {

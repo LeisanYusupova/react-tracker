@@ -1,3 +1,3 @@
 window.onload = () => {
-    YaSendSuggestToken('https://react-tracker-ochre.vercel.app/');
+    YaSendSuggestToken('https://react-tracker-ty5h.vercel.app/');
 };
