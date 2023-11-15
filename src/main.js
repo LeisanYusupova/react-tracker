@@ -1,4 +1,5 @@
 // Авторизуем пользователя, используя инфу о нем.
+document.getElementById('button').disabled = true;
 const authorize = ({
                        default_avatar_id: defaultAvatarId,
                        display_name: displayName,
@@ -30,11 +31,12 @@ window.onload = () => {
                 const result = await fetchYandexData(data.access_token);
                 authorize(result);
                 console.log(result, data);
-                localStorage.setItem('token', data.access_token)
+                localStorage.setItem('token', data.access_token);
+                document.getElementById('button').disabled = false;
+                document.getElementById('button').onclick = () => {
+                    window.location.href = 'https://tracker.seven-group.pro/calculation'
+                }
             })
             .catch((error) => console.log("Что-то пошло не так: ", error));
-    };
-    document.getElementById("button").onclick = () => {
-        // TODO button
     };
 };
