@@ -31,7 +31,7 @@ window.onload = () => {
                 const result = await fetchYandexData(data.access_token);
                 authorize(result);
                 console.log(result, data);
-                localStorage.setItem('token', data.access_token);
+                window.localStorage.setItem('token', data.access_token);
                 document.getElementById('button').disabled = false;
                 document.getElementById('button').onclick = () => {
                     window.location.href = 'https://tracker.seven-group.pro/calculation'
