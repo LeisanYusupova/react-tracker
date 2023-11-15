@@ -1,5 +1,5 @@
 // Авторизуем пользователя, используя инфу о нем.
-document.getElementById('button').disabled = true;
+
 const authorize = ({
                        default_avatar_id: defaultAvatarId,
                        display_name: displayName,
