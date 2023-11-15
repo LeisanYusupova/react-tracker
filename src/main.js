@@ -30,6 +30,7 @@ window.onload = () => {
                 const result = await fetchYandexData(data.access_token);
                 authorize(result);
                 console.log(result, data);
+                localStorage.setItem('token', data.access_token)
             })
             .catch((error) => console.log("Что-то пошло не так: ", error));
     };
