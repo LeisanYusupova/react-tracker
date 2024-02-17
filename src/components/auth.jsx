@@ -1,6 +1,10 @@
 export const Auth = () => {
+    let authHandler;
     const handleAuthButtonClick = () => {
-        let authHandler;
+        if (authHandler && typeof authHandler.unmount === 'function') {
+            authHandler.unmount();
+        }
+
             window.YaAuthSuggest.init({
                 client_id: '202f06d8b9824ee680dd9201edf6bf64',
                 response_type: 'token',
@@ -12,9 +16,6 @@ export const Auth = () => {
                 })
                 .then(async (data) => {
                     console.log(data);
-                    if (typeof authHandler === 'function') {
-                        authHandler.unmount();
-                    }
                 });
 
     };
@@ -22,7 +23,7 @@ export const Auth = () => {
     return (
         <div>
             <button onClick={handleAuthButtonClick}>
-                Auth
+                Яндекс
             </button>
         </div>
     );
