@@ -6,10 +6,10 @@ export const Auth = () => {
         }
 
             window.YaAuthSuggest.init({
-                client_id: '202f06d8b9824ee680dd9201edf6bf64',
+                client_id: '59f0959964be487a84f13f7b64a4821d',
                 response_type: 'token',
                 redirect_uri: 'https://react-tracker-ty5h.vercel.app/token.html'
-            }, '--https://react-tracker-ty5h.vercel.app/--')
+            }, 'https://react-tracker-ty5h.vercel.app/')
                 .then(({ handler }) => {
                     authHandler = handler;
                     return handler();
