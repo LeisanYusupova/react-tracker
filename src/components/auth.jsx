@@ -3,12 +3,13 @@ export const Auth = () => {
     let isInitInProgress = false;
 
     const handleAuthButtonClick = () => {
-        if (authHandler && typeof authHandler.unmount === 'function') {
-            authHandler.unmount();
+        if (authHandler) {
+            authHandler.destroy();
+            authHandler = null;
         }
 
         if (isInitInProgress) {
-            return; // Если инициализация уже запущена, выходим из функции
+            return;
         }
 
         isInitInProgress = true;
@@ -20,7 +21,7 @@ export const Auth = () => {
         }, '--https://react-tracker-leisan-yusupovas-projects.vercel.app/--')
             .then(({ handler }) => {
                 authHandler = handler;
-                isInitInProgress = false; // Сбрасываем флаг, так как инициализация завершена
+                isInitInProgress = false;
                 return handler();
             })
             .then(async (data) => {
@@ -28,7 +29,7 @@ export const Auth = () => {
             })
             .catch((error) => {
                 console.error('Error during initialization:', error);
-                isInitInProgress = false; // Обработка ошибки, сбрасываем флаг
+                isInitInProgress = false;
             });
     };
 
