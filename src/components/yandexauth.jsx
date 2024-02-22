@@ -25,7 +25,7 @@ export const YandexAuth = () => {
             {userData &&
                 <div>
                     <YandexLogout onSuccess={logoutSuccess}>
-                        <button>Yandex Logout</button>
+                        <button>Yandex Logout </button>
                     </YandexLogout>
                     <ul>
                         <li>access_token: {userData.access_token}</li>
