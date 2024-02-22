@@ -1,10 +1,11 @@
 import './App.css';
 import { Auth } from './components/auth';
+import {YandexAuth} from "./components/yandexauth";
 
 function App() {
   return (
     <>
-    <Auth></Auth>
+    <YandexAuth></YandexAuth>
     </>
   );
 }
