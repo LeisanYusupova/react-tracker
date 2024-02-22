@@ -1,12 +1,12 @@
 
 import './App.css';
+import {Auth} from "./components/Auth";
 
-import {YandexAuth} from "./components/YandexAuth";
 
 function App() {
   return (
     <div className="App">
-      <YandexAuth/>
+      <Auth/>
     </div>
   );
 }
