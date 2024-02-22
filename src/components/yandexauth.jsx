@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 import { YandexLogin, YandexLogout } from 'react-yandex-login';
 
 const clientID = '59f0959964be487a84f13f7b64a4821d';
