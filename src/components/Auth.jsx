@@ -14,35 +14,9 @@ export const Auth = () => {
                 redirect_uri: 'https://react-tracker-leisan-yusupovas-projects.vercel.app/token.html'
             }, '--https://react-tracker-leisan-yusupovas-projects.vercel.app/--')
                 .then(({ handler }) => handler())
-                .then(async (data) => {
-                    console.log(data.access_token);
-                    try {
-                        console.log('test string');
-                        const response = await fetch(
-                            `https://login.yandex.ru/info?format=json&oauth_token=${data.access_token}`,
-                        );
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! Status: ${response.status}`);
-                        }
-                        const loginData = await response.json();
-                        console.log(loginData);
-                        const login = loginData.login;
-                        const storedData =
-                            JSON.parse(window.localStorage.getItem('storedData')) || [];
-                            storedData.push({
-                                token: data.access_token,
-                                login: login,
-                            });
-                            window.localStorage.setItem(
-                                'storedData',
-                                JSON.stringify(storedData),
-                            );
-                            const modifiedStoredData = JSON.parse(
-                                window.localStorage.getItem('storedData'),
-                            );
-                            setStoredData(modifiedStoredData);
-                            // window.location.reload();
-                    } catch {}
+                .then( (data) => {
+                    console.log(data);
+                    window.location.reload();
                 })
                 .catch((error) => {
                     console.log('Что-то пошло не так: ', error);
@@ -54,15 +28,6 @@ export const Auth = () => {
             <button onClick={handleAuthButtonClick}>
                 Яндекс
             </button>
-            <div className="wrapper-button">
-                {storedData.length > 0 &&
-                    storedData.map((item, index) => (
-                        <div className="button-container" key={item.login}>
-                            <span>{item.login}</span>
-                        </div>
-                    ))}
-            </div>
-
         </div>
     );
 };
