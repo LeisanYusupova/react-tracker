@@ -16,7 +16,9 @@ export const Auth = () => {
                 .then(({ handler }) => handler())
                 .then( (data) => {
                     console.log(data);
-                    window.location.reload();
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
                 })
                 .catch((error) => {
                     console.log('Что-то пошло не так: ', error);
