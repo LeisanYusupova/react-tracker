@@ -1,9 +1,7 @@
 import {useState} from 'react';
 export const Auth = () => {
-    const [authInProgress, setAuthInProgress] = useState(false);
+
     const handleAuthButtonClick = () => {
-        if (!authInProgress) {
-            setAuthInProgress(true);
             window.YaAuthSuggest.init({
                 client_id: '59f0959964be487a84f13f7b64a4821d',
                 response_type: 'token',
@@ -12,13 +10,11 @@ export const Auth = () => {
                 .then(({ handler }) => handler())
                 .then(async (data) => {
                     console.log(data);
-                    setAuthInProgress(false);
+                    window.location.reload();
                 })
                 .catch((error) => {
                     console.log('Что-то пошло не так: ', error);
-                    setAuthInProgress(false);
                 });
-        }
     }
 
     return (
