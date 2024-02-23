@@ -8,21 +8,42 @@ export const Auth = () => {
     }, []);
 
     const handleAuthButtonClick = () => {
-            window.YaAuthSuggest.init({
-                client_id: '59f0959964be487a84f13f7b64a4821d',
-                response_type: 'token',
-                redirect_uri: 'https://react-tracker-leisan-yusupovas-projects.vercel.app/token.html'
-            }, '--https://react-tracker-leisan-yusupovas-projects.vercel.app/--')
-                .then(({ handler }) => handler())
-                .then( (data) => {
-                    console.log(data);
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 2000);
-                })
-                .catch((error) => {
-                    console.log('Что-то пошло не так: ', error);
-                });
+        window.YaAuthSuggest.init({
+            client_id: '59f0959964be487a84f13f7b64a4821d',
+            response_type: 'token',
+            redirect_uri: 'https://react-tracker-leisan-yusupovas-projects.vercel.app/token.html'
+        }, '--https://react-tracker-leisan-yusupovas-projects.vercel.app/--')
+            .then(({ handler }) => handler())
+            .then(async (data) => {
+                try {
+                    const response = await fetch(
+                        `https://login.yandex.ru/info?format=json&oauth_token=${data.access_token}`,
+                    );
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    const loginData = await response.json();
+                    const login = loginData.login;
+                    const storedData =
+                        JSON.parse(window.localStorage.getItem('storedData')) || [];
+                    storedData.push({
+                        token: data.access_token,
+                        login: login,
+                    });
+                    window.localStorage.setItem(
+                        'storedData',
+                        JSON.stringify(storedData),
+                    );
+                    const modifiedStoredData = JSON.parse(
+                        window.localStorage.getItem('storedData'),
+                    );
+                    setStoredData(modifiedStoredData);
+                    window.location.reload();
+                } catch {}
+            })
+            .catch((error) => {
+                console.log('Что-то пошло не так: ', error);
+            });
     }
 
     return (
@@ -30,6 +51,15 @@ export const Auth = () => {
             <button onClick={handleAuthButtonClick}>
                 Яндекс
             </button>
+            <div className="wrapper-button">
+                {storedData.length > 0 &&
+                    storedData.map((item, index) => (
+                        <div className="button-container" key={item.login}>
+                            <span>{item.login}</span>
+                        </div>
+                    ))}
+            </div>
+
         </div>
     );
 };
