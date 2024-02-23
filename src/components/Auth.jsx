@@ -15,7 +15,9 @@ export const Auth = () => {
             }, '--https://react-tracker-leisan-yusupovas-projects.vercel.app/--')
                 .then(({ handler }) => handler())
                 .then(async (data) => {
+                    console.log(data.access_token);
                     try {
+                        console.log('test string');
                         const response = await fetch(
                             `https://login.yandex.ru/info?format=json&oauth_token=${data.access_token}`,
                         );
