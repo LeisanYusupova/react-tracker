@@ -38,7 +38,6 @@ export const Auth = () => {
                                 window.localStorage.getItem('storedData'),
                             );
                             setStoredData(modifiedStoredData);
-                            updateAccounts(modifiedStoredData);
                             window.location.reload();
                     } catch {}
                 })
