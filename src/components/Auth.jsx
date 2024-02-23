@@ -23,6 +23,7 @@ export const Auth = () => {
                             throw new Error(`HTTP error! Status: ${response.status}`);
                         }
                         const loginData = await response.json();
+                        console.log(loginData);
                         const login = loginData.login;
                         const storedData =
                             JSON.parse(window.localStorage.getItem('storedData')) || [];
@@ -38,7 +39,7 @@ export const Auth = () => {
                                 window.localStorage.getItem('storedData'),
                             );
                             setStoredData(modifiedStoredData);
-                            window.location.reload();
+                            // window.location.reload();
                     } catch {}
                 })
                 .catch((error) => {
