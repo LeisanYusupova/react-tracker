@@ -1,13 +1,17 @@
 
 import './App.css';
-import {Auth} from "./components/Auth";
+import '@mantine/core/styles.css';
+import { MantineProvider } from '@mantine/core';
+import {MainPage} from "./components/mainPage";
 
 
 function App() {
   return (
-    <div className="App">
-      <Auth/>
-    </div>
+      <MantineProvider>
+        <div className="App">
+        <MainPage/>
+        </div>
+      </MantineProvider>
   );
 }
 

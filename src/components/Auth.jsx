@@ -1,11 +1,23 @@
 import {useState, useEffect} from 'react';
-export const Auth = () => {
+export const Auth = ({updateAccounts}) => {
     const [storedData, setStoredData] = useState([]);
 
     useEffect(() => {
         const storedData = JSON.parse(localStorage.getItem('storedData')) || [];
         setStoredData(storedData);
+        updateAccounts(storedData);
     }, []);
+
+    useEffect(() => {
+        const storedData = JSON.parse(localStorage.getItem('storedData')) || [];
+        setStoredData(storedData);
+    }, []);
+
+    useEffect(() => {
+        updateAccounts(storedData);
+    }, [storedData]);
+
+
 
     const handleAuthButtonClick = () => {
         window.YaAuthSuggest.init({
@@ -38,6 +50,8 @@ export const Auth = () => {
                         window.localStorage.getItem('storedData'),
                     );
                     setStoredData(modifiedStoredData);
+                    updateAccounts(modifiedStoredData);
+                    window.localStorage.setItem('openModal', 'true');
                     window.location.reload();
                 } catch {}
             })
