@@ -19,6 +19,8 @@ export const Auth = ({updateAccounts}) => {
 
 
 
+
+
     const handleAuthButtonClick = () => {
         window.YaAuthSuggest.init({
             client_id: '59f0959964be487a84f13f7b64a4821d',

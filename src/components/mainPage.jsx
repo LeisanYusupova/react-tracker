@@ -19,10 +19,15 @@ export const MainPage =()=> {
         }
     }, []);
 
+    const handleModalClose = () => {
+        close();
+        localStorage.removeItem('openModal');
+    };
+
     return (
         <div>
             <>
-                <Modal opened={opened} onClose={close} title="Authentication">
+                <Modal opened={opened} onClose={handleModalClose} title="Authentication">
                     <Auth updateAccounts={setAccounts} />
                 </Modal>
                 <Button onClick={open}>{`${accounts.length > 0 ? 'Аккаунты' : 'Войти'}`}</Button>
